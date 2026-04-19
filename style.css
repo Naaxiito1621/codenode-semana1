@@ -1,0 +1,13 @@
+body {
+    line-height: 1;
+    font-family: 'Times New Roman', Times, serif;
+    color: crimson;
+    background-color: #e2c9c9;
+    text-align: center;
+    padding: 25px;
+  }
+  
+  div {
+    margin-bottom: 10px;
+    
+}

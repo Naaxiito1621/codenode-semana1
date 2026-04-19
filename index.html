@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+     
+</head>
+<body>
+    <h1>Formulario de contacto</h1>
+    <form action="form.php" method="post">
+       <div>
+         <label for="name">Nombre:</label>
+        <input type="text" id="name" name="name" required><br><br>
+       </div>
+       <div>
+        <label for="Apellidos">Apellidos:</label>
+       <input type="text" id="Apellidos" name="Apellidos" required><br><br>
+      </div>
+        <div>
+        <label for="email">Correo electrónico:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        </div>
+        <div>
+            <label for="telefono">Numero de teléfono:</label>
+            <input type="tel" id="telefono" name="telefono" placeholder="Ej: 664256891" required><br><br>
+        </div>
+        <div>
+            <label for="Dni">Dni:</label>
+            <input type="text" id="text" name="text" maxlength="9" placeholder="Ej: 12345678K"required><br><br>
+        </div>
+        <button type="submit"> 
+            <a href="respuesta.html">Enviar</a>
+        </button>
+        
+    
+    </form>
+</body>
+    
+    
+</html>
