@@ -5,9 +5,23 @@ body {
     background-color: #e2c9c9;
     text-align: center;
     padding: 25px;
-  }
-  
-  div {
+}
+
+div {
     margin-bottom: 10px;
-    
+}
+
+.nav-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: crimson;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.nav-button:hover {
+    opacity: 0.85;
 }

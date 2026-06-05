@@ -1,18 +1,19 @@
 <?php
+require_once __DIR__ . '/includes/form_helpers.php';
 
+$fields = [
+    ['field' => 'name',      'label' => 'Este mensaje fue enviado por'],
+    ['field' => 'Apellidos', 'label' => 'Sus Apellidos'],
+    ['field' => 'email',     'label' => 'Su correo es'],
+    ['field' => 'telefono',  'label' => 'Numero de telefono'],
+    ['field' => 'Dni',       'label' => 'Dni'],
+];
 
-$nombre = $_POST['name'];
-$email = $_POST['email'];
-$Num_telefono = $_POST['telefono'];
-$Apellidos = $_POST['Apellidos'];
-$Dni = $_POST['Dni'];
+$formatted = [];
+foreach ($fields as $entry) {
+    $formatted[] = format_post_field($entry['field'], $entry['label']);
+}
 
-$nombre = "Este mensaje fue enviado por: " . $nombre;
-$Apellidos = "Sus Apellidos: " . $Apellidos;
-$email = "Su correo es: " . $email;
-$Num_telefono = "Numero de telefono: " . $Num_telefono;
-$Dni = "Dni: " . $Dni;
-
-header('Location: respuesta.html');
-
+header('Location: respuesta.php');
+exit;
 ?>
