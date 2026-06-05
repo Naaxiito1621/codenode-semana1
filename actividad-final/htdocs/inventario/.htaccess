@@ -1,0 +1,14 @@
+# ============================================
+# .htaccess — Seguridad para inventario.local
+# ============================================
+
+# Redirigir tráfico HTTP a HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Control de acceso con credenciales
+AuthType Basic
+AuthName "Acceso Restringido - TecnoSoluciones S.A."
+AuthUserFile "C:/xampp/apache/conf/.htpasswd"
+Require valid-user
