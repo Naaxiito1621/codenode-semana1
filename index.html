@@ -9,6 +9,12 @@
 </head>
 <body>
     <h1>Formulario de contacto</h1>
+
+    <div id="error-container" style="color: red; text-align: left; margin: 10px auto; max-width: 400px; display: none;">
+        <p><strong>Se encontraron los siguientes errores:</strong></p>
+        <ul id="error-list"></ul>
+    </div>
+
     <form action="form.php" method="post">
        <div>
          <label for="name">Nombre:</label>
@@ -28,15 +34,32 @@
         </div>
         <div>
             <label for="Dni">Dni:</label>
-            <input type="text" id="text" name="text" maxlength="9" placeholder="Ej: 12345678K"required><br><br>
+            <input type="text" id="Dni" name="Dni" maxlength="9" placeholder="Ej: 12345678K" required><br><br>
         </div>
-        <button type="submit"> 
-            <a href="respuesta.html">Enviar</a>
-        </button>
-        
-    
+        <button type="submit">Enviar</button>
     </form>
+
+    <script>
+        // Display server-side validation errors passed via query params
+        (function() {
+            var params = new URLSearchParams(window.location.search);
+            var errors = [];
+            for (var pair of params.entries()) {
+                if (pair[0].startsWith('errors')) {
+                    errors.push(pair[1]);
+                }
+            }
+            if (errors.length > 0) {
+                var container = document.getElementById('error-container');
+                var list = document.getElementById('error-list');
+                container.style.display = 'block';
+                errors.forEach(function(err) {
+                    var li = document.createElement('li');
+                    li.textContent = err;
+                    list.appendChild(li);
+                });
+            }
+        })();
+    </script>
 </body>
-    
-    
 </html>
