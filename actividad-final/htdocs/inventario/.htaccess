@@ -1,12 +1,14 @@
-# ============================================================
-# Control de acceso — Solo personal autorizado
-# ============================================================
-# Este archivo debe estar en: C:\xampp\htdocs\inventario\.htaccess
-# El archivo de contrasenas (.htpasswd) se guarda fuera de htdocs
-# por seguridad, en: C:\xampp\passwords\.htpasswd
-# ============================================================
+# ============================================
+# .htaccess — Seguridad para inventario.local
+# ============================================
 
+# Redirigir tráfico HTTP a HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
+# Control de acceso con credenciales
 AuthType Basic
-AuthName "Acceso restringido — TecnoSoluciones S.A."
-AuthUserFile "C:/xampp/passwords/.htpasswd"
+AuthName "Acceso Restringido - TecnoSoluciones S.A."
+AuthUserFile "C:/xampp/apache/conf/.htpasswd"
 Require valid-user
