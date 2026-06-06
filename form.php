@@ -1,18 +1,17 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
 
-$nombre = $_POST['name'];
-$email = $_POST['email'];
-$Num_telefono = $_POST['telefono'];
-$Apellidos = $_POST['Apellidos'];
-$Dni = $_POST['Dni'];
+use App\FormProcessor;
 
-$nombre = "Este mensaje fue enviado por: " . $nombre;
-$Apellidos = "Sus Apellidos: " . $Apellidos;
-$email = "Su correo es: " . $email;
-$Num_telefono = "Numero de telefono: " . $Num_telefono;
-$Dni = "Dni: " . $Dni;
+$processor = new FormProcessor();
+$result = $processor->process($_POST);
 
-header('Location: respuesta.html');
+if ($result['success']) {
+    header('Location: ' . $processor->getRedirectUrl());
+    exit;
+}
 
-?>
+// If validation fails, redirect back (in a real app, show errors)
+header('Location: index.html');
+exit;
