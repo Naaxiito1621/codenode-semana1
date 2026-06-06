@@ -1,12 +1,33 @@
 # ============================================================
 # Control de acceso — Solo personal autorizado
 # ============================================================
-# Este archivo debe estar en: C:\xampp\htdocs\inventario\.htaccess
-# El archivo de contrasenas (.htpasswd) se guarda fuera de htdocs
+# Este archivo protege el directorio inventario/ con contraseña.
+# Cuando un usuario intenta acceder a cualquier página dentro de
+# esta carpeta, Apache muestra un cuadro de diálogo pidiendo
+# usuario y contraseña antes de mostrar el contenido.
+#
+# Ubicación de este archivo:
+#   C:\xampp\htdocs\inventario\.htaccess
+#
+# El archivo de contraseñas (.htpasswd) se guarda FUERA de htdocs
 # por seguridad, en: C:\xampp\passwords\.htpasswd
+# (si estuviera dentro de htdocs, alguien podría descargarlo)
+#
+# Para que este archivo funcione, httpd.conf debe tener:
+#   AllowOverride All (dentro del bloque <Directory> correspondiente)
 # ============================================================
 
+# Tipo de autenticación: Basic
+# (el navegador muestra un cuadro de diálogo estándar de usuario/contraseña)
 AuthType Basic
+
+# Mensaje que aparece en el cuadro de diálogo de autenticación
 AuthName "Acceso restringido — TecnoSoluciones S.A."
+
+# Ruta al archivo que contiene los usuarios y contraseñas cifradas
+# Este archivo se genera ejecutando: scripts\generar-htpasswd.bat
 AuthUserFile "C:/xampp/passwords/.htpasswd"
+
+# Require valid-user: solo permite acceso a usuarios que estén
+# en el archivo .htpasswd y proporcionen la contraseña correcta
 Require valid-user
